@@ -93,23 +93,19 @@ phpmyadmin_install() {
 
 
 
-dialog --backtitle "LAMP Installation Script" --infobox "Do you want to install LAMP server?" 10 40
-response=$?
-if [ "$?" == "Yes" ]; then
-	clear
-	echo -e "\e[36m Now installing the LAMP server..."
-	printf "\n"
-	printf "\n"
-	apache_install
-	printf "\n"
-	mariadb_install
-	printf "\n"
-	php_install
-	printf "\n"
-	phpmyadmin_install
-	printf "\n"
-	clear
-	dialog --backtitle "LAMP Installation Script" --infobox "LAMP server successfully installed!" 10 40
-else
-	break
-fi			
+clear
+echo -e "\e[36m Now installing the LAMP server..."
+printf "\n"
+printf "\n"
+apache_install
+printf "\n"
+mariadb_install
+printf "\n"
+php_install
+printf "\n"
+phpmyadmin_install
+printf "\n"
+clear
+dialog --backtitle "LAMP Installation Script" --infobox "LAMP server successfully installed!" 10 40
+sleep 2
+exit			
