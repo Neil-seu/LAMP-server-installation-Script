@@ -4,6 +4,8 @@
 
 N.B: This is only for practising web development locally. This is not recommended for commersial or production purpose. I provide a description how to configure mysql step for easy configuration. </b>
 
+<b> Run the script by typing : sudo sh lamp_server_configuration.sh </b>
+
 #####Setup MySQL/MariaDB root user password
 
 As you may know, It is recommended to setup a password for database root user. As my script is for testing purpose, it's better to skip..
