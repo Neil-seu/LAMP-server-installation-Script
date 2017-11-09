@@ -16,6 +16,7 @@ apache_install() {
 	echo -e "\e[34m Enabling apache service at boot..."
 	printf "\n"
 	sudo systemctl enable httpd
+	sudo systemctl start httpd
 	printf "\n"
 	echo -e "\e[92m Apache installed successfully!"
 	printf "\n"
@@ -29,16 +30,11 @@ mariadb_install() {
 	echo -e "\e[34m Initializing Mariadb data directory..."
 	printf "\n"
 	sudo mysql_install_bd --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-	sudo sed -i 's/;extension=bz2.so/extension=bz2.so/' /etc/php/php.ini
-	sudo sed -i 's/;extension=mcrypt.so/extension=mcrypt.so/' /etc/php/php.ini
-	sudo sed -i 's/;extension=mysqli.so/extension=mysqli.so/' /etc/php/php.ini
-	sudo sed -i 's/;extension=pdo_mysql.so/extension=pdo_mysql.so/' /etc/php/php.ini
-	sudo sed -i 's/;extension=pdo_sqlite.so/extension=pdo_sqlite.so/' /etc/php/php.ini
-	sudo sed -i 's/;extension=zip.so/extension=zip.so/' /etc/php/php.ini
 	printf "\n"
 	echo -e "\e[34m Enabling Mariadb service at boot..."
 	printf "\n"
 	sudo systemctl enable mariadb.service
+	sudo systemctl start mariadb.service
 	printf "\n"
 	echo -e "\e[33m Now carefully configure mariadb database security according to your choice..."
 	printf "\n"
@@ -55,11 +51,19 @@ php_install() {
 	printf "\n"
 	echo -e "\e[34m Configuring php modules..."
 	printf "\n"
+	sudo sed -i 's/;extension=bz2.so/extension=bz2.so/' /etc/php/php.ini
+	sudo sed -i 's/;extension=mcrypt.so/extension=mcrypt.so/' /etc/php/php.ini
+	sudo sed -i 's/;extension=mysqli.so/extension=mysqli.so/' /etc/php/php.ini
+	sudo sed -i 's/;extension=pdo_mysql.so/extension=pdo_mysql.so/' /etc/php/php.ini
+	sudo sed -i 's/;extension=pdo_sqlite.so/extension=pdo_sqlite.so/' /etc/php/php.ini
+	sudo sed -i 's/;extension=zip.so/extension=zip.so/' /etc/php/php.ini
 	sudo sed -i 's/LoadModule mpm_event_module modules\/mod_mpm_event.so/#LoadModule mpm_event_module modules\/mod_mpm_event.so/'  /etc/httpd/conf/httpd.conf
 	sudo sed -i 's/^#LoadModule mpm_prefork_module modules\/mod_mpm_prefork.so/LoadModule mpm_prefork_module modules\/mod_mpm_prefork.so/' /etc/httpd/conf/httpd.conf
 	sudo sed -i '68 i\LoadModule php7_module modules/libphp7.so' /etc/httpd/conf/httpd.conf
 	sudo sed -i '69 i\AddHandler php7-script php' /etc/httpd/conf/httpd.conf
 	sudo sed -i '70 i\Include conf/extra/php7_module.conf' /etc/httpd/conf/httpd.conf
+	printf "\n"
+	sudo systemctl restart httpd
 	printf "\n"
 	echo -e "\e[92m Mariadb installed successfully!"
 	printf "\n"
@@ -86,6 +90,8 @@ phpmyadmin_install() {
 	sudo sed -i '30 i\$cfg['Servers'][$i]['user'] = 'root';' /etc/webapps/phpmyadmin/config.inc.php
 	sudo sed -i '31 i\$cfg['Servers'][$i]['password'] = '';' /etc/webapps/phpmyadmin/config.inc.php
 	sudo sed -i '35s/false/true/' /etc/webapps/phpmyadmin/config.inc.php
+	printf "\n"
+	sudo systemctl restart httpd
 	printf "\n"
 	echo -e "\e[92m phpMyAdmin installed successfully!"
 	printf "\n"
