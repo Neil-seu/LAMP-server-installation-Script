@@ -111,7 +111,6 @@ php_install
 printf "\n"
 phpmyadmin_install
 printf "\n"
-clear
-dialog --backtitle "LAMP Installation Script" --infobox "LAMP server successfully installed!" 10 40
+echo -e "\e[33m phpMyAdmin installed successfully!"
 sleep 2
 exit			
