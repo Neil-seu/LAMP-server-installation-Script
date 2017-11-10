@@ -29,7 +29,7 @@ mariadb_install() {
 	printf "\n"
 	echo -e "\e[34m Initializing Mariadb data directory..."
 	printf "\n"
-	sudo mysql_install_bd --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+	sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 	printf "\n"
 	echo -e "\e[34m Enabling Mariadb service at boot..."
 	printf "\n"
