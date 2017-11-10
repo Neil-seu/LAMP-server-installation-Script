@@ -65,7 +65,7 @@ php_install() {
 	printf "\n"
 	sudo systemctl restart httpd
 	printf "\n"
-	echo -e "\e[92m Mariadb installed successfully!"
+	echo -e "\e[92m php installed successfully!"
 	printf "\n"
 }
 
