@@ -84,7 +84,6 @@ phpmyadmin_install() {
 	sudo echo 'Options FollowSymlinks' >> /etc/httpd/conf/extra/phpmyadmin.conf
 	sudo echo 'Require all granted' >> /etc/httpd/conf/extra/phpmyadmin.conf
 	sudo echo '</Directory>' >> /etc/httpd/conf/extra/phpmyadmin.conf
-	sudo sed -i '$a\\n# phpMyAdmin configuration' /etc/httpd/conf/httpd.conf
 	sudo sed -i '$a\\nInclude conf\/extra\/phpmyadmin.conf' /etc/httpd/conf/httpd.conf
 	sudo sed -i '29s/cookie/config/' /etc/webapps/phpmyadmin/config.inc.php
 	sudo sed -i '30 i\$cfg['Servers'][$i]['user'] = 'root';' /etc/webapps/phpmyadmin/config.inc.php
