@@ -4,7 +4,6 @@
 
 N.B: This is only for practising web development locally. This is not recommended for commersial or production purpose. I provide a description how to configure mysql step for easy configuration. </b>
 
-<b> To Download: wget -O lamp.sh https://goo.gl/VokQdN </b>
 
 <b> Run the script by typing : sudo sh lamp_server_configuration.sh </b>
 
