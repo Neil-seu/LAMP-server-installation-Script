@@ -96,7 +96,16 @@ phpmyadmin_install() {
 	printf "\n"
 }
 
-
+finalize() {
+	echo -e "\e[36m Finalizing..."
+	printf "\n"
+	sudo cp -f pwd/httpd.conf /etc/httpd/conf/httpd.conf
+	sudo cp -f pwd/php.ini /etc/php/php.ini
+	sudo cp -f pwd/phpmyadmin.conf /etc/httpd/conf/extra/phpmyadmin.conf
+	sudo cp -f pwd/config.inc.php /etc/webapps/phpmyadmin/config.inc.php
+	printf "\n"
+	echo -e "\e[92m Configured successfully!"
+}
 
 clear
 echo -e "\e[36m Now installing the LAMP server..."
@@ -109,6 +118,8 @@ printf "\n"
 php_install
 printf "\n"
 phpmyadmin_install
+printf "\n"
+finalize
 printf "\n"
 echo -e "\e[33m phpMyAdmin installed successfully!"
 sleep 2
