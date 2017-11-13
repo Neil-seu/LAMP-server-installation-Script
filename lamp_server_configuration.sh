@@ -99,10 +99,10 @@ phpmyadmin_install() {
 finalize() {
 	echo -e "\e[36m Finalizing..."
 	printf "\n"
-	sudo cp -f pwd/httpd.conf /etc/httpd/conf/httpd.conf
-	sudo cp -f pwd/php.ini /etc/php/php.ini
-	sudo cp -f pwd/phpmyadmin.conf /etc/httpd/conf/extra/phpmyadmin.conf
-	sudo cp -f pwd/config.inc.php /etc/webapps/phpmyadmin/config.inc.php
+	sudo cp -f httpd.conf /etc/httpd/conf/httpd.conf
+	sudo cp -f php.ini /etc/php/php.ini
+	sudo cp -f phpmyadmin.conf /etc/httpd/conf/extra/phpmyadmin.conf
+	sudo cp -f config.inc.php /etc/webapps/phpmyadmin/config.inc.php
 	printf "\n"
 	echo -e "\e[92m Configured successfully!"
 }
