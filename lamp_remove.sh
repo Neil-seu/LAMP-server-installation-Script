@@ -47,5 +47,5 @@ echo -e "\e[92m phpmyadmin removed successfully!"
 printf "\n"
 printf "\n"
 echo -e "\e[96m Lamp Server successfully removed!"
-clear
+sleep 2
 exit
