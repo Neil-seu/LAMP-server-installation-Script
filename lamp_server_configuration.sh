@@ -72,7 +72,7 @@ php_install() {
 phpmyadmin_install() {
 	echo -e "\e[32m Installing phpmyadmin..."
 	printf "\n"
-	sudo pacman -S php-mcrypt phpmyadmin --noconfirm
+	sudo pacman -S phpmyadmin --noconfirm
 	printf "\n"
 	echo -e "\e[34m Configuring phpmyadmin..."
 	printf "\n"
